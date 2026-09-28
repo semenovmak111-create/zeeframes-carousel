@@ -23,8 +23,9 @@ version.
 
 ## Behaviour
 
-- Prev / next are thin chevrons pinned to the window edges, in the page margin.
-  Below 992 px, where the margin is too narrow, round arrows appear inside the card.
+- Prev / next are the round outlined buttons of the testimonial slider, centred in
+  the page margins left and right of the card. Below 992 px, where the margin is too
+  narrow, the same buttons sit inside the card under the text.
 - Tabs follow the WAI-ARIA tabs pattern: ← → move between slides (anywhere inside
   the block), Home / End jump to the first / last. The carousel loops.
 - Swipe left / right on the slide; vertical scrolling stays native.
