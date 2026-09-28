@@ -3,11 +3,10 @@
 A drop-in section for zeeframes.com: seven slides with tabs, arrows, a counter and
 the dots pill of the testimonial slider. Live demo:
 https://semenovmak111-create.github.io/zeeframes-carousel/
-(`?theme=dark` shows the dark variant).
 
 ## Embed
 
-1. Copy the `<section class="zcr zcr--light" id="what-you-get" data-zcr>…</section>` block from `index.html`.
+1. Copy the `<section class="zcr" id="what-you-get" data-zcr>…</section>` block from `index.html`.
 2. Add `carousel.css` to the page `<head>` and `carousel.js` before `</body>`.
 3. Copy `assets/macbook-air-m1.webp` next to `carousel.css` (it is referenced as
    `assets/macbook-air-m1.webp`; change the `url()` in `.zcr-mbp` if you put it elsewhere).
@@ -16,10 +15,10 @@ The block uses the fonts the site already loads (Inter Tight, Inter) and the tok
 from `colors.css` (`--color-primary`, `--color-black-300`, `--color-rich-black`, …)
 with fallbacks. All classes are prefixed `zcr-`. No external dependencies.
 
-Light by default: the section carries `zcr--light` (cream background, white card,
-cream picture frame; the devices and the cards of slides 4–7 stay dark, like the
-one black card in the cream "Process" grid). Remove `zcr--light` for the dark
-version.
+A light section (white, like the article list of /insights). Each slide is laid
+out as the featured article card there: cream copy on the left — category pill,
+heading, text, a ✦ line — and a full-bleed picture on the right: a device or a
+light UI screen on a flat studio background, as in the home showcase.
 
 ## Behaviour
 

@@ -1,47 +1,32 @@
 /* ZeeFrames — "What you get" carousel
    Namespaced with .zcr-* so it can be dropped into any page of zeeframes.com.
-   Every value below is taken from the live site: colors.css, style.css and
-   service-page.css (anchor tabs, bento grids, testimonial slider controls).
-   The three devices on slides 1–3 are ported from amdc-site v1 (#gain) and keep
-   their own geometry, measure (--u / --k) and animation timings. */
+   Built from the site's light vocabulary: the featured article card of
+   /insights (.blogs-grid, .category-pill, .blog-heading), the showcase
+   thumbnails of the home page (a device on a flat studio background), the
+   testimonial slider controls (.cf-nav-btn, .cf-dot) and the section header of
+   the service pages. The three devices on slides 1–3 are ported from amdc-site
+   v1 (#gain) and keep their own geometry, measure (--u / --k) and timings. */
 
 .zcr {
     --zcr-primary: var(--color-primary, #F3FE00);
-    --zcr-bg: var(--color-black-300, #0B0B0B);
-    --zcr-frame: var(--color-rich-black, #151515);
-    --zcr-cell: var(--color-black-210, #1F1F1F);
-    --zcr-line: var(--color-white-08, rgba(255, 255, 255, 0.08));
-    --zcr-line-2: var(--color-gray-muted, #373737);
-    --zcr-text: var(--color-white, #FFFFFF);
-    --zcr-text-2: var(--color-gray-165, #D4D4D8);
-    --zcr-text-3: var(--color-gray-170, #A1A1AA);
-    --zcr-text-4: #71717A;
-    --zcr-eyebrow: var(--color-primary, #F3FE00);
-    --zcr-title: var(--color-white, #FFFFFF);
-    --zcr-olive: #282601;
-    --zcr-icon-bg: rgba(243, 254, 0, 0.10);
-    --zcr-icon-border: rgba(243, 254, 0, 0.20);
-    --zcr-icon-color: var(--color-primary, #F3FE00);
-    --zcr-tab: #71717A;
-    --zcr-tab-on-bg: #282601;
-    --zcr-tab-on: var(--color-primary, #F3FE00);
-    --zcr-nav-border: var(--color-black-400, #3C3C3C);
-    --zcr-nav-color: var(--color-gray-165, #D4D4D8);
-    --zcr-nav-hover: var(--color-white, #FFFFFF);
-    --zcr-dots-bg: var(--color-black-210, #1F1F1F);
-    --zcr-dot: var(--color-gray-700, #3F3F46);
-    --zcr-dot-fill: var(--color-primary, #F3FE00);
-    --zcr-focus: var(--color-primary, #F3FE00);
-    --zcr-card-bg: var(--color-black-300, #0B0B0B);
-    --zcr-vis-h: 600px;
-    --zcr-pad: 32px;
+    --zcr-bg: var(--color-white, #FFFFFF);
+    --zcr-pane: var(--color-cream-white, #FAF9F4);
+    --zcr-line: var(--color-gray-250, #E4E4E7);
+    --zcr-ink: var(--color-gray-900, #18181B);
+    --zcr-ink-title: var(--color-gray-800, #27272A);
+    --zcr-ink-2: var(--color-gray-700, #3F3F46);
+    --zcr-ink-3: var(--color-gray-650, #52525B);
+    --zcr-ink-4: #71717A;
+    --zcr-focus: var(--color-gray-900, #18181B);
+    --zcr-vis-h: 560px;
+    --zcr-pad: 48px;
     --zcr-auto: 8s;
 
     position: relative;
     overflow: hidden;
     padding: 0 0 60px;
     background-color: var(--zcr-bg);
-    color: var(--zcr-text);
+    color: var(--zcr-ink);
     font-family: "Inter Tight", sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
@@ -80,10 +65,9 @@
     padding: 0 60px;
 }
 
-/* ── Section header: eyebrow + H2 on the left, muted paragraph on the right ── */
+/* ── Section header: the cream "Process" header of the service pages ── */
 
 .zcr-head {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,24 +75,11 @@
     padding: 60px 0 48px;
 }
 
-/* the soft lime blob the site lays under section headers (section-blob.png) */
-.zcr-head::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 100%;
-    height: 192px;
-    transform: translateX(-50%);
-    background: radial-gradient(50% 100% at 50% 100%, rgba(239, 255, 16, 0.06), transparent);
-    pointer-events: none;
-}
-
 .zcr-eyebrow {
     font-family: Inter, sans-serif;
     font-size: 14px;
     line-height: 20px;
-    color: var(--zcr-eyebrow);
+    color: var(--zcr-ink);
 }
 
 .zcr-title {
@@ -118,7 +89,7 @@
     line-height: 44px;
     font-weight: 500;
     letter-spacing: -0.72px;
-    color: var(--zcr-title);
+    color: var(--zcr-ink-title);
 }
 
 .zcr-desc {
@@ -126,10 +97,11 @@
     font-family: Inter, sans-serif;
     font-size: 16px;
     line-height: 24px;
-    color: var(--zcr-text-2);
+    color: var(--zcr-ink-3);
 }
 
-/* ── Tabs: the sticky anchor tabs of the service pages ── */
+/* ── Tabs: white pills of the search field and category pill, the active
+   one black like the current page of the /insights pagination ── */
 
 .zcr-tabs {
     display: flex;
@@ -145,60 +117,52 @@
 
 .zcr .zcr-tab {
     flex: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-family: Inter, sans-serif;
+    padding: 10px 16px;
+    border: 1px solid var(--zcr-line);
+    border-radius: 999px;
+    background-color: var(--color-white, #FFFFFF);
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
-    color: var(--zcr-tab);
+    color: var(--zcr-ink-3);
     white-space: nowrap;
-    transition: color .2s;
+    transition: color .15s, background-color .15s, border-color .15s;
 }
 
-.zcr .zcr-tab:hover,
+.zcr .zcr-tab:hover {
+    color: var(--zcr-ink);
+}
+
 .zcr .zcr-tab[aria-selected="true"] {
-    color: var(--zcr-tab-on);
-    background-color: var(--zcr-tab-on-bg);
+    border-color: var(--zcr-ink);
+    background-color: var(--zcr-ink);
+    color: var(--color-white, #FFFFFF);
 }
 
-.zcr .zcr-tab:focus-visible {
-    outline-offset: -2px;
-}
+/* ── Card: the featured article of /insights — cream copy on the left,
+   the picture full-bleed on the right, radius 12 ── */
 
-/* ── Card: a bento of two cells — copy on the left, the frame on the right ── */
+.zcr-deck {
+    position: relative;
+}
 
 .zcr-card {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) auto;
-    border: 1px solid var(--zcr-line);
-    border-radius: 14px;
+    border-radius: 12px;
     overflow: hidden;
-    background: var(--zcr-card-bg);
+    background: var(--zcr-pane);
 }
 
-/* One frame for all seven pictures: the same surface, light and size, so the
-   right half reads as one series. Olive light rises from the bottom edge the
-   way it does in the service hero (service-hero-bg.webp). */
+/* One frame for all seven pictures, like a showcase thumbnail: a device on a
+   flat light studio background. */
 .zcr-frame {
     grid-column: 2;
     grid-row: 1 / 3;
-    position: relative;
-    overflow: hidden;
-    background: var(--zcr-frame);
-    border-left: 1px solid var(--zcr-line);
-}
-
-.zcr-frame::before {
-    content: "";
-    position: absolute;
-    inset: 0;
     background:
-        radial-gradient(46% 42% at 50% 100%, rgba(243, 254, 0, 0.16), transparent 72%),
-        radial-gradient(38% 46% at 0% 20%, rgba(243, 254, 0, 0.05), transparent 70%);
-    pointer-events: none;
+        radial-gradient(90% 75% at 50% 30%, #F8F8F9 0%, #F0F0F2 55%, #E7E7EA 100%);
 }
 
 .zcr-stage {
@@ -212,7 +176,7 @@
 .zcr-slide {
     grid-area: 1 / 1;
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     opacity: 0;
     visibility: hidden;
     transition: opacity .5s ease, visibility .5s ease;
@@ -228,76 +192,56 @@
     grid-column: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 40px;
-    padding: var(--zcr-pad) var(--zcr-pad) calc(var(--zcr-pad) + 76px);
-}
-
-/* card-icon.primary-icon */
-.zcr-icon {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    border: 1px solid var(--zcr-icon-border);
-    background: var(--zcr-icon-bg);
-    color: var(--zcr-icon-color);
+    align-items: flex-start;
+    padding: var(--zcr-pad) var(--zcr-pad) calc(var(--zcr-pad) + 64px);
 }
 
-.zcr-icon svg {
-    width: 24px;
-    height: 24px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+/* .category-pill */
+.zcr-pill {
+    display: block;
+    max-width: fit-content;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid #F4F4F5;
+    background-color: var(--color-white, #FFFFFF);
+    font-size: 12px;
+    color: var(--zcr-ink-2);
 }
 
-.zcr-tag {
-    font-family: Inter, sans-serif;
+/* .blog-heading */
+.zcr-h3 {
+    margin: 24px 0;
+    font-size: 26px;
+    line-height: 34px;
+    font-weight: 400;
+    letter-spacing: -0.52px;
+    color: var(--zcr-ink);
+}
+
+/* .blog-text */
+.zcr-lead {
     font-size: 14px;
     line-height: 20px;
-    color: var(--zcr-text-3);
+    color: var(--zcr-ink-2);
 }
 
-.zcr-h3 {
-    margin-top: 8px;
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 500;
-    letter-spacing: -0.48px;
-    color: var(--zcr-text);
-}
-
-.zcr-lead {
-    margin-top: 12px;
-    font-family: Inter, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--zcr-text-2);
-}
-
-/* the "result" line: a hairline and the ✦ marker of the site's checklists */
+/* one line of the ✦ checklist of the Signs card */
 .zcr-kick {
     display: flex;
     gap: 8px;
     margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--zcr-line);
     font-family: Inter, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
-    color: var(--zcr-text);
+    color: #1B1B18;
 }
 
 .zcr-kick::before {
     content: "✦";
     flex: none;
-    color: var(--zcr-primary);
+    color: var(--zcr-ink);
 }
 
 .zcr-visual {
@@ -311,12 +255,34 @@
     justify-content: center;
 }
 
-/* ── Edge arrows: the round outlined buttons of the testimonial slider
-   (.cf-nav-btn, below), moved out to the page margins and centred in them:
+/* ── Arrows: the round outlined buttons of the testimonial slider.
+   On wide screens they sit in the page margins, centred in them:
    (100vw − deck width) / 2 is the margin. ── */
 
-.zcr-deck {
-    position: relative;
+.zcr .zcr-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #D0D0D0;
+    color: #555555;
+    transition: border-color .2s, color .2s;
+}
+
+.zcr .zcr-nav:hover {
+    border-color: var(--color-black, #000000);
+    color: var(--color-black, #000000);
+}
+
+.zcr-nav svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .zcr .zcr-edge {
@@ -329,11 +295,13 @@
 .zcr .zcr-edge.prev { left: calc((100vw - 100%) / -4 - 20px); }
 .zcr .zcr-edge.next { right: calc((100vw - 100%) / -4 - 20px); }
 
-/* on wide screens the edge arrows do the job; the round arrows return where the
-   page margin is too narrow for them */
-.zcr .zcr-arrows { display: none; }
+/* inside the card the arrows only appear where the margin is too narrow */
+.zcr .zcr-arrows {
+    display: none;
+    gap: 20px;
+}
 
-/* ── Controls: the testimonial slider — round arrows and the dots pill ── */
+/* ── Counter and the dots pill of the testimonial slider ── */
 
 .zcr-controls {
     grid-column: 1;
@@ -347,55 +315,23 @@
     padding: 0 var(--zcr-pad) var(--zcr-pad);
 }
 
-.zcr-arrows {
-    display: flex;
-    gap: 20px;
-}
-
-.zcr .zcr-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--zcr-nav-border);
-    color: var(--zcr-nav-color);
-    transition: border-color .2s, color .2s;
-}
-
-.zcr .zcr-nav:hover {
-    border-color: var(--zcr-nav-hover);
-    color: var(--zcr-nav-hover);
-}
-
-.zcr-nav svg {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
 .zcr-meta {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
+/* the article meta line ("10 min read • Jun 22") */
 .zcr-count {
-    font-family: Inter, sans-serif;
     font-size: 14px;
-    line-height: 20px;
-    color: var(--zcr-text-4);
+    color: var(--zcr-ink-3);
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
 }
 
 .zcr-count b {
     font-weight: 500;
-    color: var(--zcr-text);
+    color: var(--zcr-ink);
 }
 
 .zcr-dots {
@@ -405,7 +341,7 @@
     min-width: 112px;
     padding: 4px;
     border-radius: 100px;
-    background-color: var(--zcr-dots-bg);
+    background-color: #F4F4F4;
 }
 
 .zcr-dot {
@@ -413,7 +349,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--zcr-dot);
+    background: #D4D4D8;
     cursor: pointer;
     transition: width .2s, height .2s, border-radius .2s;
 }
@@ -427,13 +363,13 @@
     cursor: default;
 }
 
-/* progress of the autoplay, exactly like .cf-dot-fill; full once it stops */
+/* autoplay progress, exactly like .cf-dot-fill; full once it stops */
 .zcr-dot-fill {
     display: block;
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    background: var(--zcr-dot-fill);
+    background: #0B0B0B;
     transform-origin: left center;
 }
 
@@ -576,15 +512,14 @@
 }
 
 /* Wallpaper: the same abstract as v1, repainted from purple into the site's
-   olive-and-lime light (colors.css: black-180, black-100, olive #282601). */
+   hero: near-black with the primary glowing in from the top corner. */
 .zcr-ph-wall {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(76% 46% at 52% 4%, rgba(243, 254, 0, .34), transparent 64%),
-        radial-gradient(64% 40% at 14% 26%, rgba(193, 195, 0, .30), transparent 68%),
-        radial-gradient(88% 56% at 90% 78%, rgba(46, 48, 0, .78), transparent 72%),
-        linear-gradient(176deg, #2A2B06 0, #1C1D08 36%, #0D0D0C 72%, #050505 100%);
+        radial-gradient(76% 40% at 52% 0%, rgba(243, 254, 0, .26), transparent 66%),
+        radial-gradient(60% 36% at 8% 30%, rgba(243, 254, 0, .08), transparent 70%),
+        linear-gradient(176deg, #1B1B16 0, #111111 34%, #0B0B0B 70%, #050505 100%);
 }
 
 .zcr-ph-wall::after {
@@ -898,7 +833,7 @@
 
 .zcr-ph-buzz path {
     fill: none;
-    stroke: #fff;
+    stroke: var(--color-gray-900, #18181B);
     stroke-linecap: round;
     opacity: 0;
     animation: zcr-ph-ring 2s var(--zcr-dev-ease-io) infinite;
@@ -1085,7 +1020,7 @@
 }
 
 /* Neon tiles: same tube-and-inner-light technique as v1, repainted from
-   lilac into the site's primary. */
+   lilac into the site's primary, on the black of .card-icon.cta-card-icon. */
 .zcr-cmp-tile {
     --neon: rgba(243, 254, 0, .9);
     --neon-hi: #F8FF8C;
@@ -1096,7 +1031,8 @@
     display: grid;
     place-items: center;
     border: calc(1.1 * var(--k)) solid var(--neon);
-    background: radial-gradient(112% 112% at 50% 50%,
+    background-color: var(--color-black-300, #0B0B0B);
+    background-image: radial-gradient(112% 112% at 50% 50%,
         rgba(243, 254, 0, .015) 0, rgba(243, 254, 0, .05) 58%, rgba(243, 254, 0, .14) 100%);
     box-shadow:
         inset 0 0 calc(9 * var(--k)) rgba(243, 254, 0, .26),
@@ -1135,7 +1071,7 @@
 .zcr-cmp-app b {
     font: 500 calc(8.5 * var(--k))/1 Inter, sans-serif;
     letter-spacing: .03em;
-    color: rgba(243, 254, 0, .62);
+    color: var(--color-gray-650, #52525B);
     white-space: nowrap;
 }
 
@@ -1156,10 +1092,11 @@
         drop-shadow(0 calc(26 * var(--k)) calc(34 * var(--k)) rgba(0, 0, 0, .38));
 }
 
+
 /* ═══════════════════════════════════════════════════════════════════
-   Pictures 4–7: v2 data, drawn with the site's own parts — bento cells,
-   hairline rows, filter chips, stats with an accent sign, the active-tab
-   plate, the white pill button and the theme switch.
+   Pictures 4–7: v2 data drawn as light UI screens with the site's parts —
+   white cards with #E4E4E7 hairlines, the use-case bento, category pills,
+   the lime of "Book a discovery call", the black pill button, the theme switch.
    ═══════════════════════════════════════════════════════════════════ */
 
 .zcr-art {
@@ -1167,6 +1104,7 @@
     container-type: inline-size;
     font-family: Inter, sans-serif;
     text-align: left;
+    color: var(--zcr-ink);
 }
 
 .zcr-art[data-w="480"] { width: 480px; }
@@ -1174,39 +1112,44 @@
 
 .zcr-panel {
     padding: 24px;
-    border: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08));
-    border-radius: 14px;
-    background: var(--color-black-300, #0B0B0B);
-    color: #FFFFFF;
+    border: 1px solid var(--zcr-line);
+    border-radius: 12px;
+    background: var(--color-white, #FFFFFF);
 }
 
 .zcr-note {
     font-size: 14px;
     line-height: 20px;
-    color: #71717A;
+    color: var(--zcr-ink-4);
 }
 
-/* .filter-item from /work, one step smaller */
 .zcr-chip {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     padding: 6px 14px;
-    border-radius: 24px;
-    border: 1px solid var(--color-black-72, rgba(60, 60, 60, 0.72));
-    background: var(--color-black-111, #111);
+    border-radius: 999px;
+    border: 1px solid var(--zcr-line);
+    background: var(--color-white, #FFFFFF);
+    font-family: "Inter Tight", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--zcr-ink-2);
+    white-space: nowrap;
+}
+
+.zcr-chip--url {
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
-    color: #FFFFFF;
-    white-space: nowrap;
+    color: var(--zcr-ink);
 }
 
 .zcr-chip svg {
     width: 16px;
     height: 16px;
     fill: none;
-    stroke: var(--zcr-primary);
+    stroke: currentColor;
     stroke-width: 1.6;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -1227,7 +1170,7 @@
     justify-content: space-between;
     gap: 16px;
     padding: 20px 0;
-    border-top: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08));
+    border-top: 1px solid var(--zcr-line);
 }
 
 .zcr-rank-l {
@@ -1241,7 +1184,7 @@
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
-    color: #71717A;
+    color: var(--zcr-ink-4);
 }
 
 .zcr-rank-v {
@@ -1261,23 +1204,21 @@
     line-height: 20px;
     font-weight: 400;
     letter-spacing: 0;
-    color: var(--color-gray-170, #A1A1AA);
+    color: var(--zcr-ink-4);
 }
 
-.zcr-rank li.is-dim .zcr-rank-v { color: #71717A; }
+.zcr-rank li.is-dim .zcr-rank-v { color: var(--color-gray-170, #A1A1AA); }
 
-/* your own address: the active-tab plate — olive with lime */
+/* your own address: the lime of the site's primary button, with dark ink */
 .zcr-rank li.is-own {
     margin: 0 -12px;
     padding: 20px 12px;
     border-top: 0;
-    border-radius: 6px;
-    background: #282601;
+    border-radius: 8px;
+    background: var(--zcr-primary);
 }
 
-.zcr-rank li.is-own .zcr-rank-l,
-.zcr-rank li.is-own .zcr-rank-v { color: var(--zcr-primary); }
-.zcr-rank li.is-own small { color: rgba(243, 254, 0, .6); }
+.zcr-rank li.is-own small { color: var(--zcr-ink-2); }
 
 .zcr-panel-foot {
     display: flex;
@@ -1285,22 +1226,22 @@
     margin-top: 16px;
     font-size: 14px;
     line-height: 20px;
-    color: var(--color-gray-165, #D4D4D8);
+    color: var(--zcr-ink-2);
 }
 
 .zcr-panel-foot i {
     font-style: normal;
-    color: var(--zcr-primary);
+    color: var(--zcr-ink);
 }
 
-/* 5 · nine steps: .services-offer-grid */
+/* 5 · nine steps: the white bento of Use Cases */
 .zcr-steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border: 1px solid var(--color-gray-muted, #373737);
+    border: 1px solid var(--color-gray-410, #CDCDCD);
     border-radius: 14px;
     overflow: hidden;
-    background: var(--color-black-210, #1F1F1F);
+    background: var(--color-white, #FFFFFF);
 }
 
 .zcr-steps li {
@@ -1310,18 +1251,20 @@
     gap: 24px;
     min-height: 124px;
     padding: 16px;
+    font-family: "Inter Tight", sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--zcr-ink);
 }
 
-.zcr-steps li:not(:nth-child(3n + 1)) { border-left: 1px solid var(--color-gray-muted, #373737); }
-.zcr-steps li:nth-child(n + 4) { border-top: 1px solid var(--color-gray-muted, #373737); }
+.zcr-steps li:not(:nth-child(3n + 1)) { border-left: 1px solid var(--color-gray-410, #CDCDCD); }
+.zcr-steps li:nth-child(n + 4) { border-top: 1px solid var(--color-gray-410, #CDCDCD); }
 
 .zcr-steps span {
+    font-family: Inter, sans-serif;
     font-weight: 400;
-    color: var(--zcr-primary);
+    color: var(--color-gray-690, #797A71);
 }
 
 /* 6 · doctor card */
@@ -1332,14 +1275,13 @@
     margin-top: 16px;
 }
 
-/* .cf-avatar */
 .zcr-ava {
     flex-shrink: 0;
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    border: 1px solid #454545;
-    background: var(--color-black-210, #1F1F1F);
+    border: 1px solid var(--zcr-line);
+    background: var(--zcr-pane);
     display: grid;
     place-items: center;
     font-size: 16px;
@@ -1356,7 +1298,7 @@
 .zcr-doc-role {
     font-size: 14px;
     line-height: 20px;
-    color: var(--color-gray-165, #D4D4D8);
+    color: var(--zcr-ink-3);
 }
 
 .zcr-chips {
@@ -1374,7 +1316,7 @@
     display: flex;
     justify-content: space-between;
     padding: 12px 0;
-    border-top: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08));
+    border-top: 1px solid var(--zcr-line);
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
@@ -1382,7 +1324,7 @@
 
 .zcr-hours li span:first-child {
     font-weight: 400;
-    color: var(--color-gray-170, #A1A1AA);
+    color: var(--zcr-ink-4);
 }
 
 .zcr-free {
@@ -1390,8 +1332,8 @@
     margin-top: 4px;
     padding: 8px 12px;
     border-radius: 6px;
-    background: #282601;
-    color: var(--zcr-primary);
+    background: var(--zcr-primary);
+    color: var(--zcr-ink);
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
@@ -1404,7 +1346,7 @@
     gap: 16px;
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08));
+    border-top: 1px solid var(--zcr-line);
 }
 
 .zcr-price {
@@ -1421,18 +1363,18 @@
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
-    color: var(--color-gray-170, #A1A1AA);
+    color: var(--zcr-ink-4);
 }
 
-/* the white pill with ↗ ("Book a free call") */
+/* the black pill with ↗ ("Find it more", "Explore More") */
 .zcr-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
     border-radius: 99999px;
-    background: #FFFFFF;
-    color: #0D0D0D;
+    background: var(--color-black, #000000);
+    color: var(--color-white, #FFFFFF);
     font-size: 16px;
     line-height: 24px;
     font-weight: 500;
@@ -1443,7 +1385,7 @@
     width: 20px;
     height: 20px;
     fill: none;
-    stroke: #0D0D0D;
+    stroke: currentColor;
     stroke-width: 1.5;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -1454,8 +1396,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-top: 16px;
-    border-top: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08));
-    border-bottom: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08));
+    border-top: 1px solid var(--zcr-line);
+    border-bottom: 1px solid var(--zcr-line);
 }
 
 .zcr-kpis p {
@@ -1463,7 +1405,7 @@
 }
 
 .zcr-kpis p:first-child { padding-left: 0; }
-.zcr-kpis p + p { border-left: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08)); }
+.zcr-kpis p + p { border-left: 1px solid var(--zcr-line); }
 
 .zcr-kpis b {
     display: block;
@@ -1477,7 +1419,6 @@
 
 .zcr-kpis em {
     font-style: normal;
-    color: var(--zcr-primary);
 }
 
 .zcr-kpis span {
@@ -1485,7 +1426,7 @@
     margin-top: 4px;
     font-size: 14px;
     line-height: 20px;
-    color: var(--color-gray-170, #A1A1AA);
+    color: var(--zcr-ink-4);
 }
 
 .zcr-bars {
@@ -1506,7 +1447,7 @@
 .zcr-bars i {
     display: block;
     border-radius: 4px;
-    background: var(--color-primary-dull-022, rgba(243, 254, 0, 0.22));
+    background: var(--zcr-line);
 }
 
 .zcr-bars .is-now i { background: var(--zcr-primary); }
@@ -1514,13 +1455,13 @@
 .zcr-bars span {
     font-size: 12px;
     line-height: 20px;
-    color: #71717A;
+    color: var(--zcr-ink-4);
     text-align: center;
 }
 
 .zcr-toggles {
     margin-top: 20px;
-    border-top: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08));
+    border-top: 1px solid var(--zcr-line);
 }
 
 .zcr .zcr-toggle {
@@ -1530,12 +1471,12 @@
     gap: 16px;
     width: 100%;
     padding: 12px 0;
-    border-bottom: 1px solid var(--color-white-08, rgba(255, 255, 255, 0.08));
+    border-bottom: 1px solid var(--zcr-line);
     font-family: Inter, sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--zcr-ink);
     text-align: left;
 }
 
@@ -1546,8 +1487,8 @@
     width: 40px;
     height: 24px;
     border-radius: 12px;
-    border: 1px solid var(--color-black-500, #373636);
-    background: var(--color-black-550, #2B2A2A);
+    border: 1px solid var(--color-gray-500, #D4D4D8);
+    background: var(--color-gray-250, #E4E4E7);
     transition: background-color .2s, border-color .2s;
 }
 
@@ -1559,18 +1500,18 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #71717A;
+    background: var(--color-white, #FFFFFF);
     transition: transform .2s, background-color .2s;
 }
 
 .zcr-toggle[aria-pressed="true"] i {
-    border-color: var(--zcr-primary);
+    border-color: var(--color-primary-3, #C1C300);
     background: var(--zcr-primary);
 }
 
 .zcr-toggle[aria-pressed="true"] i::after {
     transform: translateX(16px);
-    background: #0D0D0D;
+    background: var(--zcr-ink);
 }
 
 /* pictures reflowed down to ~360 px on phones */
@@ -1589,19 +1530,12 @@
 /* ── Responsive ─────────────────────────────────────── */
 
 @media (max-width: 1204px) {
-    .zcr-card,
-    .zcr-slide {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    }
-
+    .zcr { --zcr-pad: 40px; }
     .zcr-dots { min-width: 0; }
 }
 
 @media (max-width: 991px) {
-    .zcr { --zcr-vis-h: 520px; }
-
-    .zcr .zcr-edge { display: none; }
-    .zcr .zcr-arrows { display: flex; }
+    .zcr { --zcr-vis-h: 500px; --zcr-pad: 32px; }
 
     .zcr-container { padding: 0 40px; }
 
@@ -1620,13 +1554,7 @@
         grid-template-rows: var(--zcr-vis-h) auto auto;
     }
 
-    .zcr-frame {
-        grid-column: 1;
-        grid-row: 1;
-        border-left: 0;
-        border-bottom: 1px solid var(--zcr-line);
-    }
-
+    .zcr-frame { grid-column: 1; grid-row: 1; }
     .zcr-stage { grid-row: 1 / 3; }
 
     .zcr-slide {
@@ -1639,7 +1567,6 @@
     .zcr-text {
         grid-row: 2;
         justify-content: flex-start;
-        gap: 24px;
         padding: var(--zcr-pad) var(--zcr-pad) 0;
     }
 
@@ -1647,12 +1574,15 @@
         grid-row: 3;
         padding: 32px var(--zcr-pad) var(--zcr-pad);
     }
+
+    .zcr .zcr-edge { display: none; }
+    .zcr .zcr-arrows { display: flex; }
 }
 
 @media (max-width: 575px) {
     .zcr {
         --zcr-vis-h: 420px;
-        --zcr-pad: 20px;
+        --zcr-pad: 16px;
         padding-bottom: 24px;
     }
 
@@ -1666,8 +1596,7 @@
         line-height: 32px;
     }
 
-    .zcr-desc,
-    .zcr-lead {
+    .zcr-desc {
         font-size: 14px;
         line-height: 20px;
     }
@@ -1678,69 +1607,17 @@
         scroll-padding: 0 24px;
     }
 
+    /* .blog-heading on phones */
     .zcr-h3 {
+        margin: 24px 0 8px;
         font-size: 20px;
         line-height: 28px;
-        letter-spacing: -0.4px;
     }
 
-    .zcr-arrows { gap: 12px; }
+    .zcr-controls { padding: 24px var(--zcr-pad) var(--zcr-pad); }
+    .zcr .zcr-arrows { gap: 12px; }
     .zcr-meta { gap: 12px; }
     .zcr-dots { gap: 4px; }
-}
-
-/* ── Cream variant (default in the demo): .zcr--light on the section ── */
-
-.zcr--light {
-    --zcr-bg: var(--color-cream-white, #FAF9F4);
-    --zcr-card-bg: var(--color-white, #FFFFFF);
-    --zcr-line: var(--color-gray-410, #CDCDCD);
-    --zcr-text: var(--color-gray-900, #18181B);
-    --zcr-text-2: var(--color-gray-650, #52525B);
-    --zcr-text-3: var(--color-gray-690, #797A71);
-    --zcr-text-4: #71717A;
-    --zcr-eyebrow: var(--color-gray-900, #18181B);
-    --zcr-title: var(--color-gray-800, #27272A);
-    --zcr-icon-bg: var(--color-cream-white, #FAF9F4);
-    --zcr-icon-border: #E7E7E4;
-    --zcr-icon-color: var(--color-gray-800, #27272A);
-    --zcr-tab-on-bg: var(--color-gray-900, #18181B);
-    --zcr-nav-border: #D0D0D0;
-    --zcr-nav-color: #555555;
-    --zcr-nav-hover: var(--color-black, #000000);
-    --zcr-dots-bg: #F4F4F4;
-    --zcr-dot: #D4D4D8;
-    --zcr-dot-fill: #0B0B0B;
-}
-
-.zcr--light .zcr-head::after { display: none; }
-.zcr--light .zcr-kick::before { color: var(--color-gray-800, #27272A); }
-
-.zcr--light {
-    --zcr-focus: var(--color-gray-900, #18181B);
-}
-
-/* the frame turns cream (the Stack tools area, cream-300); devices and the
-   dark cards stay dark — like the one black card in the cream Process grid */
-.zcr--light .zcr-frame {
-    background: var(--color-cream-300, #F4F2E8);
-}
-
-.zcr--light .zcr-frame::before {
-    background: radial-gradient(46% 42% at 50% 100%, rgba(193, 195, 0, 0.14), transparent 72%);
-}
-
-/* the neon listings get the black tile of .card-icon.cta-card-icon */
-.zcr--light .zcr-cmp-tile {
-    background-color: var(--color-black-300, #0B0B0B);
-}
-
-.zcr--light .zcr-ph-buzz path {
-    stroke: var(--color-gray-900, #18181B);
-}
-
-.zcr--light .zcr-cmp-app b {
-    color: var(--color-gray-650, #52525B);
 }
 
 /* ── Reduced motion: everything works, nothing moves ── */
