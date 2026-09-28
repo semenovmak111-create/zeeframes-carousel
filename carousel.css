@@ -31,6 +31,8 @@
     --zcr-dots-bg: var(--color-black-210, #1F1F1F);
     --zcr-dot: var(--color-gray-700, #3F3F46);
     --zcr-dot-fill: var(--color-primary, #F3FE00);
+    --zcr-edge: #71717A;
+    --zcr-edge-hover: var(--color-white, #FFFFFF);
     --zcr-card-bg: var(--color-black-300, #0B0B0B);
     --zcr-vis-h: 600px;
     --zcr-pad: 32px;
@@ -309,6 +311,49 @@
     align-items: center;
     justify-content: center;
 }
+
+/* ── Edge chevrons: pinned to the window edge, not to the column —
+   (100vw − deck width) / 2 is the page margin, and the chevron sits in it.
+   No ring, no plate: a thin line. Taken from the AMDC landing (.deck-nav). ── */
+
+.zcr-deck {
+    position: relative;
+}
+
+.zcr .zcr-edge {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: clamp(34px, 3vw, 46px);
+    height: clamp(52px, 5vw, 74px);
+    transform: translateY(-50%);
+    color: var(--zcr-edge);
+    transition: color .2s, transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+
+.zcr-edge svg {
+    width: clamp(26px, 2.4vw, 36px);
+    height: clamp(26px, 2.4vw, 36px);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.zcr .zcr-edge.prev { left: calc(14px - (100vw - 100%) / 2); }
+.zcr .zcr-edge.next { right: calc(14px - (100vw - 100%) / 2); }
+.zcr .zcr-edge:hover { color: var(--zcr-edge-hover); }
+.zcr .zcr-edge.prev:hover { transform: translateY(-50%) translateX(-3px); }
+.zcr .zcr-edge.next:hover { transform: translateY(-50%) translateX(3px); }
+.zcr .zcr-edge:active { opacity: .6; }
+.zcr .zcr-edge:focus-visible { outline-offset: -4px; border-radius: 4px; }
+
+/* on wide screens the chevrons do the job; the round arrows return where the
+   page margin is too narrow for them */
+.zcr .zcr-arrows { display: none; }
 
 /* ── Controls: the testimonial slider — round arrows and the dots pill ── */
 
@@ -1577,6 +1622,9 @@
 @media (max-width: 991px) {
     .zcr { --zcr-vis-h: 520px; }
 
+    .zcr .zcr-edge { display: none; }
+    .zcr .zcr-arrows { display: flex; }
+
     .zcr-container { padding: 0 40px; }
 
     .zcr-head {
@@ -1663,9 +1711,7 @@
     .zcr-dots { gap: 4px; }
 }
 
-/* ── Cream variant: add .zcr--light to the section ──
-   The picture frame stays dark, inset into the white card the way the Signs
-   card holds its black image. */
+/* ── Cream variant (default in the demo): .zcr--light on the section ── */
 
 .zcr--light {
     --zcr-bg: var(--color-cream-white, #FAF9F4);
@@ -1692,20 +1738,32 @@
 .zcr--light .zcr-head::after { display: none; }
 .zcr--light .zcr-kick::before { color: var(--color-gray-800, #27272A); }
 
+.zcr--light {
+    --zcr-edge: var(--color-gray-170, #A1A1AA);
+    --zcr-edge-hover: var(--color-gray-900, #18181B);
+}
+
+/* the frame turns cream (the Stack tools area, cream-300); devices and the
+   dark cards stay dark — like the one black card in the cream Process grid */
 .zcr--light .zcr-frame {
-    margin: 12px;
-    border-left: 0;
-    border-radius: 8px;
-    background: var(--color-black-300, #0B0B0B);
+    background: var(--color-cream-300, #F4F2E8);
 }
 
-.zcr--light .zcr-visual {
-    margin: 12px;
-    height: calc(var(--zcr-vis-h) - 24px);
+.zcr--light .zcr-frame::before {
+    background: radial-gradient(46% 42% at 50% 100%, rgba(193, 195, 0, 0.14), transparent 72%);
 }
 
-@media (max-width: 991px) {
-    .zcr--light .zcr-frame { border-bottom: 0; }
+/* the neon listings get the black tile of .card-icon.cta-card-icon */
+.zcr--light .zcr-cmp-tile {
+    background-color: var(--color-black-300, #0B0B0B);
+}
+
+.zcr--light .zcr-ph-buzz path {
+    stroke: var(--color-gray-900, #18181B);
+}
+
+.zcr--light .zcr-cmp-app b {
+    color: var(--color-gray-650, #52525B);
 }
 
 /* ── Reduced motion: everything works, nothing moves ── */

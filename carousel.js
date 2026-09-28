@@ -90,8 +90,12 @@
             d.addEventListener('click', function () { go(n, true); });
         });
 
-        root.querySelector('[data-zcr-prev]').addEventListener('click', function () { go(current - 1, true); });
-        root.querySelector('[data-zcr-next]').addEventListener('click', function () { go(current + 1, true); });
+        root.querySelectorAll('[data-zcr-prev]').forEach(function (b) {
+            b.addEventListener('click', function () { go(current - 1, true); });
+        });
+        root.querySelectorAll('[data-zcr-next]').forEach(function (b) {
+            b.addEventListener('click', function () { go(current + 1, true); });
+        });
 
         // ← → anywhere inside the block; Home / End on the tabs
         root.addEventListener('keydown', function (e) {

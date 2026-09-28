@@ -7,15 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="carousel.css?v=1">
+    <link rel="stylesheet" href="carousel.css?v=2">
     <style>
-        html, body { margin: 0; background: #0B0B0B; }
-        body.zcr-demo-light { background: #FAF9F4; }
+        html, body { margin: 0; background: #FAF9F4; }
+        body.zcr-demo-dark { background: #0B0B0B; }
     </style>
 </head>
 <body>
 
-<section class="zcr" id="what-you-get" data-zcr aria-roledescription="карусель" aria-label="Что даёт сайт">
+<section class="zcr zcr--light" id="what-you-get" data-zcr aria-roledescription="карусель" aria-label="Что даёт сайт">
     <div class="zcr-container">
 
         <header class="zcr-head">
@@ -35,6 +35,15 @@
             <button type="button" class="zcr-tab" role="tab" id="zcr-tab-6" aria-controls="zcr-slide-6" aria-selected="false" tabindex="-1">Врач выбран заранее</button>
             <button type="button" class="zcr-tab" role="tab" id="zcr-tab-7" aria-controls="zcr-slide-7" aria-selected="false" tabindex="-1">Управляемый поток</button>
         </div>
+
+        <div class="zcr-deck">
+        <!-- thin chevrons in the page margins, as on the AMDC landing -->
+        <button type="button" class="zcr-edge prev" data-zcr-prev aria-label="Предыдущий слайд">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 4.5L8 12l8.5 7.5"/></svg>
+        </button>
+        <button type="button" class="zcr-edge next" data-zcr-next aria-label="Следующий слайд">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 4.5L16 12l-8.5 7.5"/></svg>
+        </button>
 
         <div class="zcr-card">
             <div class="zcr-frame" aria-hidden="true"></div>
@@ -411,17 +420,18 @@
                 </div>
             </div>
         </div>
+        </div>
 
     </div>
 </section>
 
 <script>
-    // demo only: ?theme=light shows the cream variant (.zcr--light)
-    if (/[?&]theme=light/.test(location.search)) {
-        document.body.classList.add('zcr-demo-light');
-        document.querySelector('.zcr').classList.add('zcr--light');
+    // demo only: ?theme=dark shows the dark variant (without .zcr--light)
+    if (/[?&]theme=dark/.test(location.search)) {
+        document.body.classList.add('zcr-demo-dark');
+        document.querySelector('.zcr').classList.remove('zcr--light');
     }
 </script>
-<script src="carousel.js?v=1"></script>
+<script src="carousel.js?v=2"></script>
 </body>
 </html>
