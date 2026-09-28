@@ -62,7 +62,7 @@
     position: relative;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 var(--zcr-gutter, 60px);
 }
 
 /* ── Section header: the cream "Process" header of the service pages ── */
@@ -236,6 +236,10 @@
     line-height: 20px;
     font-weight: 500;
     color: #1B1B18;
+}
+
+.zcr-kick b {
+    font-weight: 600;
 }
 
 .zcr-kick::before {
@@ -1256,6 +1260,8 @@
     line-height: 20px;
     font-weight: 600;
     color: var(--zcr-ink);
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 .zcr-steps li:not(:nth-child(3n + 1)) { border-left: 1px solid var(--color-gray-410, #CDCDCD); }
@@ -1537,7 +1543,7 @@
 @media (max-width: 991px) {
     .zcr { --zcr-vis-h: 500px; --zcr-pad: 32px; }
 
-    .zcr-container { padding: 0 40px; }
+    .zcr { --zcr-gutter: 40px; }
 
     .zcr-head {
         flex-direction: column;
@@ -1586,7 +1592,7 @@
         padding-bottom: 24px;
     }
 
-    .zcr-container { padding: 0 24px; }
+    .zcr { --zcr-gutter: 24px; }
 
     .zcr-head { padding: 24px 0; }
 
@@ -1602,9 +1608,9 @@
     }
 
     .zcr-tabs {
-        margin: 0 -24px 16px;
-        padding: 0 24px;
-        scroll-padding: 0 24px;
+        margin: 0 calc(-1 * var(--zcr-gutter, 24px)) 16px;
+        padding: 0 var(--zcr-gutter, 24px);
+        scroll-padding: 0 var(--zcr-gutter, 24px);
     }
 
     /* .blog-heading on phones */
